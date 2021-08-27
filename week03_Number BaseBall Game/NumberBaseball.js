@@ -4,6 +4,8 @@ const answerLen = 3;
 let answerNum = new Array(answerLen);
 // 유저가 입력할 숫자 삽입 배열 생성
 let playerNum = new Array(answerLen);
+// 플레이 진행 횟수
+let playCount;
 
 // const $playNum = document.getElementById('#playNum');
 const $start = document.getElementById('start');
@@ -12,6 +14,14 @@ const $num2 = document.getElementById('#num2');
 const $num3 = document.getElementById('#num3');
 const $play = document.getElementById('play');
 
+
+const playNum = 9;
+
+function init(){
+    makeNumber()
+    playCount = 1;
+    window.alert("게임 START!\n0~9 사이의 숫자 3개를 입력하세요!")     
+}
 
 // 정답 생성 함수
 const makeNumber = function (){
@@ -59,9 +69,11 @@ const compareNumber = function (playerNum3){
     let strike = 0;
     let ball = 0;
     let out = 0;
+    // console.log("answer",answerNum);
+    // console.log("play",playerNum);
 
-    for (let i=0; i<answerLen; i++){
-        if (answerNum[i] === playerNum[i]){
+    for (let i =0; i<answerLen; i++){
+        if (answerNum[i] == playerNum[i]){
             strike += 1;
         } else if (answerNum.includes(playerNum[i])) {
             ball += 1;
@@ -69,8 +81,10 @@ const compareNumber = function (playerNum3){
             out += 1;
         }        
     }; 
+
     // 비교 결과 확인
     console.log("%sS %sB %sO", strike, ball, out);
+
     return checkResult(strike, ball, out)
 };
 
@@ -79,21 +93,16 @@ const compareNumber = function (playerNum3){
 // 결과 확인하기
 const checkResult = function (strike, ball, out){
     if (strike == 3) {
-        window.alert("와! 스트라이크에요!")
+        window.alert(`${playCount}회차\n와! 스트라이크에요!`,playCount)
     } else {
-        window.alert(`${strike}S ${ball}B ${out}O\n다시 시도하세요 ㅠㅠ`, strike, ball, out)
-        count =+1;
+        window.alert(`${playCount}회차\n${strike}S ${ball}B ${out}O\n다시 시도하세요 ㅠㅠ`,playCount, strike, ball, out)
+        playCount += 1;
+    }
+
+    if (playCount > 9){
+        window.alert("실패하셨습니다. ㅠㅠ 재도전하시겠습니까?")
     }
 };
 
 
 
-// 게임 start!
-const playNum = 9;
-$start.addEventListener("click", () => {
-
-    // 정답생성
-    makeNumber()      
-    window.alert("게임 START!\n0~9 사이의 숫자 3개를 입력하세요!")    
-
-});

@@ -99,7 +99,8 @@ const checkResult = function (strike, ball, out){
         playCount += 1;
     }
 
-    if (playCount > 9){
+    // playnum까지만 동작
+    if (playCount > playNum){
         window.alert("실패하셨습니다. ㅠㅠ 재도전하시겠습니까?")
     }
 };

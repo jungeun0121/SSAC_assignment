@@ -69,8 +69,8 @@ const compareNumber = function (playerNum3){
     let strike = 0;
     let ball = 0;
     let out = 0;
-    // console.log("answer",answerNum);
-    // console.log("play",playerNum);
+    console.log("answer",answerNum);
+    console.log("play",playerNum);
 
     for (let i =0; i<answerLen; i++){
         if (answerNum[i] == playerNum[i]){

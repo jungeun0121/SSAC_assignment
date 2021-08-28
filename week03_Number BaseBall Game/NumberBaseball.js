@@ -8,7 +8,6 @@ let playerNum = new Array(answerLen);
 let playCount;
 
 // const $playNum = document.getElementById('#playNum');
-const $start = document.getElementById('start');
 const $num1 = document.getElementById('#num1');
 const $num2 = document.getElementById('#num2');
 const $num3 = document.getElementById('#num3');
@@ -35,7 +34,7 @@ const makeNumber = function (){
 };
 
 
-// 플레이어 입력값 유효성 검사 1)범위 2)널값 3)중복값
+// 플레이어 입력값 유효성 검사 1)범위 2)널값 3)중복값 >> 0~9까지 배열 선언 후, includes를 활용하는게 훨씬 더 효율적일것으로 보임
 $play.addEventListener("click", () => {
     
     // 숫자의 범위는 input tag에서 확인
